@@ -15,7 +15,6 @@ function secondsToMinutesSeconds(seconds) {
 
     return `${formattedMinutes}:${formattedSeconds}`;
 }
-
 async function getsongs(folder) {
     currfolder = folder;
     let response = await fetch(`https://sheladiyakishan.github.io/spotify-2/${folder}/`);
@@ -62,6 +61,7 @@ async function getsongs(folder) {
     
     return songs;
 }
+
 
 const playmusic = (track) => {
     currentsong.src = `https://sheladiyakishan.github.io/spotify-2/${currfolder}/` + encodeURIComponent(track);
