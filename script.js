@@ -19,6 +19,10 @@ function secondsToMinutesSeconds(seconds) {
 async function getsongs(folder) {
     currfolder = folder;
     let response = await fetch(`https://sheladiyakishan.github.io/spotify-2/${folder}/`);
+    if (!response.ok) {
+        console.error('Error fetching songs:', response.status);
+        return [];
+    }
     let html = await response.text();
     let div = document.createElement("div");
     div.innerHTML = html;
@@ -60,7 +64,7 @@ async function getsongs(folder) {
 }
 
 const playmusic = (track) => {
-    currentsong.src = `/${currfolder}/` + encodeURIComponent(track);
+    currentsong.src = `https://sheladiyakishan.github.io/spotify-2/${currfolder}/` + encodeURIComponent(track);
     currentsong.play();
 
     console.log(track);
@@ -71,6 +75,10 @@ const playmusic = (track) => {
 
 async function displayalbum() {
     let response = await fetch(`https://sheladiyakishan.github.io/spotify-2/songs/`);
+    if (!response.ok) {
+        console.error('Error fetching albums:', response.status);
+        return;
+    }
     let html = await response.text();
     let div = document.createElement("div");
     div.innerHTML = html;
@@ -83,6 +91,10 @@ async function displayalbum() {
         if (e.href.includes("/songs/")) {
             let folder = e.href.split("/").slice(-2, -1)[0];
             let response = await fetch(`https://sheladiyakishan.github.io/spotify-2/songs/${folder}/info.json`);
+            if (!response.ok) {
+                console.error('Error fetching album info:', response.status);
+                continue;
+            }
             let albumInfo = await response.json();
 
             cardcontainer.innerHTML += `<div data-folder="${folder}" class="card">
