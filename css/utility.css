@@ -1,0 +1,43 @@
+
+.boder{
+    border: 2px solid red;
+    margin: 3px;
+}
+.flex{
+    display: flex;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.items-center{
+    align-items: center;
+}
+
+/* For Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+  width: 12px;  /* Adjust width for vertical scrollbar */
+  height: 12px; /* Adjust height for horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #2e2e2e;  /* Dark gray background */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #555;  /* Gray color for the thumb */
+  border-radius: 6px;       /* Roundness of the scrollbar thumb */
+  border: 3px solid #2e2e2e; /* Space around the thumb */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;         /* Thin scrollbar */
+  scrollbar-color: #555 #2e2e2e; /* Thumb and track colors */
+}
+
+/* For Internet Explorer and Edge (Legacy) */
+body {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
